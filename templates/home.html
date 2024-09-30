@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="Auswertung" content="width=device-width, initial-scale=1.0">
+    <title>auswertung.bi-lzh.de</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+  </head>
+  <body>
+  <form>
+    <h1>Willkommen</h1>
+    <h2>Hier können Sie Sonderauswertungen Ihrer Station durchführen</h2>
+    <h2>Ein Tag beginnt immer um 06:00 Morgens und geht bis 18:00 Abends</h2>
+    <h2>Ein Abend beginnt immer um 18:00 und geht bis 22:00 Abends</h2>
+    <h2>Eine Nacht beginnt um 22:00 und geht bis zum nächsten Tag um 06:00</h2>
+    <h2>Diese Zeiten sind aus der aktuellen Geräuschkennwertetabelle der RLS entnommen!</h2>
+  </form>
+  <form action="{{url_for("home")}}" method="post">
+    <h2>Bitte Anfangsdatum eingeben</h2>
+    <input type="date" id="datum_start" name="datum_start">
+    <h2>Bitte Enddatum eingeben</h2> 
+    <input type="date" id="datum_stop" name="datum_stop">
+    <h2>Welche Werte sollen einbezogen werden</h2> 
+    <select name="day_time" id="day_time">
+      <optgroup>  
+        <option value="Tag">Tag</option>
+        <option value="Abend">Abend</option>
+        <option value="Nacht">Nacht</option>
+        <option value="Tag u. Abend">Tag und Abend</option>
+        <option value="Abend u. Nacht">Abend und Nacht</option>
+        <option value="Tag u. Nacht">Tag und Nacht</option>
+        <option value="Tag u. Abend u. Nacht">Tag und Abend und Nacht</option>
+      </optgroup>
+    </select>
+    <h2>Intervall zwischen den Messwerten</h2>
+    <select name="hop_time" id="hop_time">
+      <optgroup>
+        <option value="5m">5 Minuten</option>
+        <option value="10m" selected="selected">10 Minuten</option>
+        <option value="20m">20 Minuten</option>
+        <option value="30m">30 Minuten</option>
+        <option value="1h">1 Stunde</option>
+        <option value="4h">4 Stunden</option>
+      </optgroup>
+    </select> 
+    <h2>Station wählen</h2>
+    <select name="station" id="station">
+      <optgroup>
+        <option value="Station_1">Station_1</option>
+        <option value="Station_2">Station_2</option>
+        <option value="Station_3">Station_3</option>
+        <option value="Station_4">Station_4</option>
+        <option value="Station_5">Station_5</option>
+        <option value="Station_6">Station_6</option>
+        <option value="Sensebox_1142">Sensebox_1142</option>
+        <option value="Sensebox_1143">Sensebox_1143</option>
+        <option value="Sensebox_1144">Sensebox_1144</option>
+        <option value="Sensebox_1145">Sensebox_1145</option>
+        <option value="Sensebox_1146">Sensebox_1146</option>
+        <option value="Sensebox_1147">Sensebox_1147</option>
+        <option value="Sensebox_1148">Sensebox_1148</option>
+        <option value="Sensebox_1154">Sensebox_1154</option>
+      </optgroup>
+    </select> 
+    <h2>Messwert wählen</h2>
+    <select name="measurement" id="measurement">
+      <optgroup>
+        <option value="dBAavg"selected="selected">dBA Mittelwert</option>
+        <option value="dBAmin">dBA Minimalwert</option>
+        <option value="dBAmax">dBA Maximalwert</option>
+        <option value="temp">Temperatur</option>
+        <option value="feucht">Lufteuchtigkeit</option>
+        <option value="druck">Luftdruck</option>
+        <option value="fein10">Feinstaub 10</option>
+        <option value="fein25">Feinstaub 2.5</option>
+      </optgroup>
+    </select>
+      <button type=submit onclick=check(this.form);  class=btn>Download</button> 
+      <h3>Hinweis: Die heruntergeladene Datei in Excel über ein leeres Dokument > Daten > Aus Text/CSV importieren.</h3>
+  </form>
+  <footer>
+    <form>
+    <h3>Sollten Sie Fragen, Anregungen oder Wünsche haben, stehe ich Ihnen jederzeit gern zur Verfügung.</h3>
+    <h3>David Schöps</h3>
+    <p><a href="mailto:anfrage@bi-lzh.de">anfrage@bi-lzh.de</a></p>
+  </footer>
+</body> 
+</html>
+
